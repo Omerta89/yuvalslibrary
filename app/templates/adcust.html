@@ -1,0 +1,146 @@
+{%extends "adminlayout.html"%} 
+
+{%block head%} {{super() }}
+{%endblock%}
+
+{%block title%}<title>Welcome {{username}}, this is admin customer managment</title>{%endblock%}
+{%block content%}
+
+
+
+<!--inside is navbar-->
+<div id="content">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Library</span>
+  </nav>
+  <div class="navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('admin.admin_member') }}">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin/member/{{username}}/books">Admin Books</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin/member/{{username}}/customers">Admin Customers</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin/member/{{username}}/loans">Admin Loans</a>
+            </li>
+              </div>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action ="/admin/customers/test" method = 'POST'>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = 'searchName'>
+            <button class="btn btn-outline-success" type="submit">Search Books</button>
+          </form>
+          <ul class="navbar-nav mr-auto-right">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">logout<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About</a>
+        </div>
+      </nav></div>
+
+
+
+
+<!--header-->
+<h1 class="center">Welcome {{username}} admin customer managment <!--your profile number is position</h1>-->
+<!--avatar img by user index-->
+<!--<img src="{{url_for('static',filename='')}}context.position.png">-->
+<!--paragraph-->
+<p class="important, tab">this is admin customer page. <br><br><br> </p><br>
+
+
+<!-- Button trigger modal -->
+<button action= type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add a customer
+  </button>
+
+
+
+
+<!--w3 Widget cards-->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for cust in res %}
+  <div class="col">
+    <div class="card">
+      <a href="/user/loanbook/{{cust}}"><br/>
+        <img
+          src="https://picsum.photos/120/16{{loop.index}}"
+          width="100"
+          height="200"
+          class="card-img-top"
+          alt="loop index of picsum photos could not load"
+      /></a>
+      <div class="card-body">
+        <h5 class="card-title">Customer Name: {{cust.name}}</h5>
+        <p class="card-text">Customer Id: {{cust.custid}}</p>
+        <p class="card-text">City: {{cust.city}}</p>
+        <p class="card-text">Age :{{cust.age}}</p>
+        <a class="btn btn-danger" href="/admin/delcust?custid={{cust.custid}}">Delete Customer</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!--end Widget cards-->
+
+
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for book1 in bookfind %}
+  <div class="col">
+  <div class="card">
+          <img src="https://picsum.photos/120/16{{loop.index}}"width = "300"  height= "400"   class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Customer name: {{book1.name}} </h5>
+            <p class="card-text">Id: {{book1.custid}}</p>
+            <p class="card-text">City: {{book1.city}}</p>
+            <p class="card-text">Age: {{book1.age}}</p>
+            <a class= "btn btn-danger" href="/admin/delcust?custid={{book1.custid}}">Delete Customer</a>
+          
+              
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<!-- ADD BOOK  -  Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a Customer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="/admin/addcust" method="POST">
+              Customer name: <input type="text" name="name"><br>
+              City: <input type="text" name="city"><br>
+              Age: <input type="number" name="age"><br>
+              <div class="modal-footer">
+              <input type="submit" value="Add a customer" class="btn btn-success">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--w3 card PICTURE-->
+<div class="w3-card-4">
+  <img src="img_snowtops.jpg" alt="Alps" />
+  <div class="w3-container w3-center">
+    <!--text-->
+    <p>The Italian / Austrian Alps</p>
+  </div>
+</div>
+
+{%endblock%}

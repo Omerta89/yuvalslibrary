@@ -1,0 +1,31 @@
+{%extends "layout.html"%} 
+{%block title%}<title>Login page</title>{%endblock%}
+{%block content%} {{super() }}
+<!--header-->
+<h1 class="center">Login</h1>
+<!--paragraph-->
+<p class="important, tab">Enter your account to view books loaned and to loan a book</p><br>
+<!--form-->
+<form class="important, tab" action="/auth" method="POST">
+    User Name: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="submit">
+</form>
+
+<br><p class="important, tab">Click the "Submit" button and the form-data will be sent to a page on the 
+    server called "".</p>
+
+    
+
+    <!--paragraph-->
+<p class="important, tab">Enter your details to register to the website</p><br>
+<!--form-->
+<form class="important, tab" action="/addcustomer" method="POST">
+    Name: <input type="text" name="name"><br><br>
+    City: <input type="info" name="city"><br><br>
+    Age: <input type="info" name="age"><br><br>
+    <input type="submit">
+</form>
+
+
+{%endblock%}

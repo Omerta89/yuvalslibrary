@@ -1,0 +1,69 @@
+<!--main page to welcome and show options, maybe in cards-->
+{%extends "layout.html"%} {%block title%} <title>Home page</title>{%endblock%}
+{%block content%} {{super() }}
+<!--header+paragraph-->
+<h1 class="center">The Library</h1>
+<p class="important, tab">Welcome to my awesome homepage.</p>
+
+
+<!-- end the cards grid -->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for book1 in bookfind %}
+  <div class="col">
+  <div class="card">
+          <img src="https://picsum.photos/120/16{{loop.index}}"width = "300"  height= "400"   class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Book Name:{{ book1.name}} </h5>
+              <p class="card-text"> Id:{{book1.bookid}}</p>
+              <p class="card-text"> Author:{{book1.author}}</p>
+              <p class="card-text"> Year Published:{{book1.yearpublished}}</p>
+              <p class="card-text"> Loantype:{{book1.loantype}} </p>
+              <a class="btn btn-primary" href="/login">Login To Info</a>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<!--w3 Widget cards-->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  {% for book in res %}
+  <div class="col">
+    <div class="card">
+      <a href="/user/loanbook/{{book}}"><br/>
+        <img
+          src="https://picsum.photos/120/16{{loop.index}}"
+          width="100"
+          height="200"
+          class="card-img-top"
+          alt="loop index of picsum photos could not load"
+      /></a>
+      <div class="card-body">
+        <h5 class="card-title">Book Name: {{ book.name}}</h5>
+        <p class="card-text">Id: {{book.bookid}}</p>
+        <p class="card-text">Author: {{book.author}}</p>
+        <p class="card-text">Year Published :{{book.yearpublished}}</p>
+        <p class="card-text">Loantype: {{book.loantype}}</p>
+        <a class="btn btn-primary" href="/admin/login">Login</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!--end Widget cards-->
+
+
+
+
+
+<!--w3 card PICTURE-->
+<div class="w3-card-4">
+  <img src="img_snowtops.jpg" alt="Alps" />
+  <div class="w3-container w3-center">
+    <!--text-->
+    <p>The Italian / Austrian Alps</p>
+  </div>
+</div>
+{%endblock%}

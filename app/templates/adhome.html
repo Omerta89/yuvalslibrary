@@ -1,0 +1,55 @@
+{%extends "adminlayout.html"%} 
+{%block head%} {{super() }}
+{%endblock%}
+{%block title%}<title>Welcome {{username}}</title>{%endblock%}
+{%block content%} {{super() }}
+<!--header-->
+<h1 class="center">Welcome {{username}} <!--your profile number is position</h1>-->
+<!--avatar img by user index-->
+<!--<img src="{{url_for('static',filename='')}}context.position.png">-->
+<!--paragraph-->
+<p class="important, tab">this is admin home page. <br><br><br> </p><br>
+
+
+
+
+
+<!--w3 Widget cards-->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for book in res %}
+    <div class="col">
+      <div class="card">
+        <a href="/user/loanbook/{{book}}"><br/>
+          <img
+            src="https://picsum.photos/120/16{{loop.index}}"
+            width="100"
+            height="200"
+            class="card-img-top"
+            alt="loop index of picsum photos could not load"
+        /></a>
+        <div class="card-body">
+          <h5 class="card-title">Book Name: {{ book.name}}</h5>
+          <p class="card-text">Id: {{book.bookid}}</p>
+          <p class="card-text">Author: {{book.author}}</p>
+          <p class="card-text">Year Published :{{book.yearpublished}}</p>
+          <p class="card-text">Loantype: {{book.loantype}}</p>
+          <a class="btn btn-danger" href="/admin/delbook?bookid={{book.bookid}}">Delete Book</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!--end Widget cards-->
+  {{book}}
+  
+  <!--w3 card PICTURE-->
+  <div class="w3-card-4">
+    <img src="img_snowtops.jpg" alt="Alps" />
+    <div class="w3-container w3-center">
+      <!--text-->
+      <p>The Italian / Austrian Alps</p>
+    </div>
+  </div>
+
+  
+{%endblock%}

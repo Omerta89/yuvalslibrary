@@ -1,0 +1,95 @@
+{%block head%}
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+<!--head block-css title block-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--favicon-->
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+  <!--bootstrap+w3 css-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--indent text (style tab)-->
+  <style type="text/css"><!--.tab {margin-left: 40px;}--></style>
+  <!--center text (style center)-->
+  <style type="text/css"><!--.center {text-align: center;}--></style>  
+  <!--title block-->
+{%block title%}<title>Welcome {{username}} to user page</title>{%endblock%}
+</head>{%endblock%}
+
+
+<!--content block-->
+{%block content %}
+<body>
+<!--favicon-->
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+<!--inside is navbar-->
+<div id="content">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Library</span>
+  </nav>
+  <div class="navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('user.user_member',name='')}}{{name}}">UserHome</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/member/{{username}}/userbooklist">All Books</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('user.user_loans',name='')}}{{name}}">Loans</a>
+            </li>
+              </div>
+          </ul>
+          <form class="d-flex" action="/user/member/{{name}}" method="POST">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchName">
+            <button class="btn btn-outline-success" type="submit">Search Books</button>
+        </form>
+          <ul class="navbar-nav mr-auto-right">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Logout<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About</a>
+        </div>
+      </nav></div>{%endblock%}
+
+<!--footer block-inside is underlinks+end section-->
+{%block footer%}
+      <div id="footer">
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Untitled</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+          <link rel="stylesheet" href="assets/css/style.css">
+      
+      <body>
+          <div class="footer-basic, center">
+              <footer>
+                  <div class="social"><br><br><br><br><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+                  <ul class="list-inline">
+                      <li class="list-inline-item"><a href="/user/">Home</a></li>
+                      <li class="list-inline-item"><a href="#">Services</a></li>
+                      <li class="list-inline-item"><a href="#">About</a></li>
+                      <li class="list-inline-item"><a href="#">Terms</a></li>
+                      <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                  </ul>
+                  <p class="copyright">Yuval's Library © 2022</p>
+              </footer>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+        </div>
+    
+  </body>
+</html>
+{% endblock %}
